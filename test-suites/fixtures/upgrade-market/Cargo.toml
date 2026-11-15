@@ -1,0 +1,33 @@
+[package]
+name = "upgrade-market"
+version = "0.0.0"
+edition = "2021"
+publish = false
+license = "AGPL-3.0-only"
+
+# Test-only executable; never a member of the production contract workspace.
+[workspace]
+resolver = "2"
+
+[lib]
+crate-type = ["cdylib"]
+test = false
+doctest = false
+
+[dependencies]
+soroban-sdk = "26.1.1"
+soroban-fixed-point-math = { git = "https://github.com/zenith-protocols/soroban-fixed-point-math", rev = "1e9ff78cc16a773deec98d9cf75a5341bf10a221" }
+stellar-access = "0.7.2"
+stellar-contract-utils = "0.7.2"
+stellar-macros = "0.7.2"
+
+# Match the market release profile; only the additive revision entry differs.
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+debug-assertions = false
+panic = "abort"
+codegen-units = 1
+lto = true

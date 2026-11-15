@@ -1,0 +1,16 @@
+# Rust's output directory
+target
+
+test_snapshots
+
+# Local settings
+.soroban
+.stellar
+.idea
+
+.planning
+.claude/
+CLAUDE.md
+
+# Output of `make release`. The release files are the GitHub release assets.
+/wasm/

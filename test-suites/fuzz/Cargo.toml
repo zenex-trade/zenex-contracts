@@ -1,0 +1,56 @@
+[package]
+name = "test-suites-fuzz"
+version = "0.0.0"
+authors = ["Zenith Protocols"]
+license = "AGPL-3.0-only"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+arbitrary = { version = "1", features = ["derive"] }
+soroban-sdk = { version = "26.1.1", features = ["testutils"] }
+market = { path = "../../market", features = ["testutils"] }
+strategy-vault = { path = "../../strategy-vault", features = ["testutils"] }
+treasury = { path = "../../treasury", features = ["testutils"] }
+oracle = { path = "../../oracle", features = ["testutils"] }
+test-suites = { path = ".." }
+
+# Prevent this from interfering with parent workspace
+[workspace]
+members = ["."]
+
+# The shared v2 harness (fixture, invariant ledger, error tables). Every
+# stateful target links it, so a contract-API change breaks one file, not four.
+[lib]
+name = "zenex_fuzz"
+path = "src/lib.rs"
+doctest = false
+
+[[bin]]
+name = "fuzz_market_general"
+path = "fuzz_targets/fuzz_market_general.rs"
+doc = false
+
+[[bin]]
+name = "fuzz_liquidation"
+path = "fuzz_targets/fuzz_liquidation.rs"
+doc = false
+
+[[bin]]
+name = "fuzz_vault_orders"
+path = "fuzz_targets/fuzz_vault_orders.rs"
+doc = false
+
+[[bin]]
+name = "fuzz_oracle"
+path = "fuzz_targets/fuzz_oracle.rs"
+doc = false
+
+[[bin]]
+name = "fuzz_economic_acceptance"
+path = "fuzz_targets/fuzz_economic_acceptance.rs"
+doc = false

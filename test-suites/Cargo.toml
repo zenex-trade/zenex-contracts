@@ -1,0 +1,36 @@
+[package]
+name = "test-suites"
+version = "0.0.1"
+authors = ["Zenith Protocols"]
+license = "AGPL-3.0-only"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["rlib"]
+doctest = false
+
+[features]
+# Keep source coverage available without changing the default WASM test stack.
+native-contracts = []
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(coverage)'] }
+
+[dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
+soroban-fixed-point-math = { workspace = true }
+market = { path = "../market", features = ["testutils"] }
+factory = { path = "../factory", features = ["testutils"] }
+oracle = { path = "../oracle", features = ["testutils"] }
+treasury = { path = "../treasury", features = ["testutils"] }
+strategy-vault = { path = "../strategy-vault", features = ["testutils"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+k256 = { version = "0.13.4", default-features = false, features = ["ecdsa"] }
+sha3 = "0.10.8"
+soroban-env-host = "=26.1.4"
+
+[dev-dependencies]
+governance = { path = "../governance", features = ["testutils"] }
+soroban-spec = "26.1.1"

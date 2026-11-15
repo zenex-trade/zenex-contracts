@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "profileId": "testnet-economics-expanded-caps",
+  "provenance": {
+    "baseline": "zenex-ops/deployments/testnet/2026-09-05-testnet-v2",
+    "branchCommit": "63ee88d89770d44f37c24fe063b85203204ccb82",
+    "changes": "Only maxPositionNotional, maxOpenInterest and maxVaultBalance are multiplied for test capacity. All economic rates, risk ratios, locks and oracle/treasury/share dials match the September 5 testnet record. The separate deployed_config stress fixture retains its 100x ladder."
+  },
+  "settlement": {
+    "symbol": "USDC",
+    "decimals": 7
+  },
+  "feed": {
+    "pairId": "xlm-usd",
+    "base": "XLM",
+    "quote": "USD",
+    "id": "000358cb12b1f5bbeca8b5b4666025a40b15520af1f82516ee2fb9a335055e9a",
+    "reportVersion": 3,
+    "decimals": 18
+  },
+  "market": {
+    "keeperRate": "100000000000000000",
+    "minPositionNotional": "10000000",
+    "maxPositionNotional": "250000000000",
+    "maxOpenInterest": "500000000000",
+    "minOrderNotional": "10000000",
+    "minOrderMargin": "10000000",
+    "execFee": "100000",
+    "feeDom": "600000000000000",
+    "feeNonDom": "400000000000000",
+    "impactScalar": "100000000000000",
+    "maxUtilOpen": "800000000000000000",
+    "maxUtilWithdraw": "900000000000000000",
+    "initMargin": "50000000000000000",
+    "maintenanceMargin": "20000000000000000",
+    "liqFee": "5000000000000000",
+    "notionalLock": "30",
+    "targetUtil": "800000000000000000",
+    "borrowRate": "15854895992",
+    "increasedBorrowRate": "15854895992",
+    "fundingIncrease": "885267",
+    "fundingDecrease": "36885",
+    "thresholdStableFunding": "40000000000000000",
+    "thresholdDecreaseFunding": "0",
+    "fundingMin": "317097920",
+    "fundingMax": "6373921868",
+    "adlMaxPnl": "550000000000000000",
+    "adlClearTarget": "400000000000000000",
+    "maxPnlTrader": "900000000000000000",
+    "maxPnlWithdraw": "150000000000000000",
+    "redeemLock": "3600",
+    "depositFee": "1000000000000000",
+    "redeemFee": "2500000000000000",
+    "minDeposit": "10000000",
+    "maxVaultBalance": "1000000000000"
+  },
+  "oracle": {
+    "tradeStaleness": "10",
+    "closeStaleness": "60",
+    "spreadReductionFactor": "500000000000000000"
+  },
+  "treasury": {
+    "rate": "300000000000000000"
+  },
+  "vault": {
+    "name": "Zenex XLM USDC Vault",
+    "symbol": "xvXLMUSDC",
+    "decimalsOffset": 6
+  },
+  "capacityMultiplier": 1000
+}
